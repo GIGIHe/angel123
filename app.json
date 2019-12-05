@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/ad/ad",
+    "pages/detail/index",
+    "pages/my/index",
+    "pages/shopCar/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#f0145a",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "angelbaby-cool",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#E64340",
+    "color": "#ABABB7",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/images/nav/home-off.png",
+        "selectedIconPath": "/images/nav/home-on.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/shopCar/index",
+        "iconPath": "/images/nav/cart-off.png",
+        "selectedIconPath": "/images/nav/cart-on.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "iconPath": "/images/nav/my-off.png",
+        "selectedIconPath": "/images/nav/my-on.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

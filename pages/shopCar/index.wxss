@@ -1,0 +1,7 @@
+/* pages/shopCar/index.wxss */
+@import "../temp_cart/index.wxss";
+.cart{
+  width: 750rpx;
+  height: 100vh;
+  background: #f2f2f2;
+}

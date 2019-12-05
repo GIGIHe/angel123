@@ -1,0 +1,4 @@
+<import src="../temp_cart/index.wxml"/>
+<view class="cart">
+<template is="{{shop_data.goods_list.length > 0 ? 'goods' : 'no_goods'}}" data="{{...shop_data}}"></template>
+</view>

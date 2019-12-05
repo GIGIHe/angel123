@@ -1,0 +1,23 @@
+/* pages/ad/ad.wxss */
+.title{
+  font-size: 24rpx;
+  color: #f00;
+  text-align: center;
+}
+.time{
+  font-size: 20rpx;
+  color: #999;
+  text-align: center;
+  margin:20rpx 0;
+}
+.con{
+  font-size: 22rpx;
+  color: #999;
+  text-indent: 4rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: block;
+}
+.con image{
+  width: 100%;
+}

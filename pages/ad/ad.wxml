@@ -1,0 +1,9 @@
+<!--pages/ad/ad.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<view class="section">
+<view class="title">{{data_.title}}</view>
+<view class="time">{{data_.dateAdd}}</view>
+</view>
+<view class="con">
+     <template is="wxParse" data="{{wxParseData:con.nodes}}" />
+</view>

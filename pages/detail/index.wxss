@@ -1,0 +1,247 @@
+.de_wrap{
+  background: #f2f2f2;
+}
+.swiper{
+  width: 100%;
+  height: 748rpx;
+  display: block;
+  background: #f2f2f2;
+}
+.swiper image{
+  display: block;
+  height: 748rpx;
+  margin: auto;
+}
+.basic_info{
+  background: #fff;
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 40rpx;
+}
+.basic_top,
+.basic_bot{
+  display: flex;
+  justify-content: space-between;
+}
+.basic_top .name{
+  color: #000;
+  font-size: 30rpx;
+  width: 600rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;/*为行数*/
+  -webkit-box-orient: vertical;
+}
+.basic_top .share{
+  width: 30px;
+  height: 30px;
+}
+.basic_top .share image{
+  width: 30px;
+  height: 30px;
+}
+.price{
+  color: #f00;
+  font-weight: bold;
+    font-size: 30rpx;
+}
+.gm_num,
+.hp_num,
+.cont{
+  color: #999;
+  font-size: 28rpx;
+}
+.con{
+  padding: 20rpx 0;
+  background: #fff;
+  margin-bottom: 110rpx;
+}
+.cont{
+  margin-left: 20rpx;
+}
+image{
+  display: block;
+  margin: 0 auto;
+  margin-top: -1rpx ;
+}
+.wxParse-p{
+ width: 750rpx;
+ padding: 0 20rpx;
+ color: #999;
+ box-sizing: border-box;
+}
+.footer{
+  width: 750rpx;
+  height: 100rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 8rpx rgba(0, 0, 0, 0.6);
+  z-index: 992;
+  display: flex;
+  text-align: center;
+}
+.footer .chat,
+.footer .cart{
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.footer .chat text{
+  color:#008000;
+}
+.footer .chat image,
+.footer .cart image{
+ width:70rpx;
+ height:70rpx;
+}
+.weui-cell{
+  padding:0;
+  position: relative;
+  font-size: 20rpx;
+  color: #999;
+}
+.weui-cell__hd{
+  width: 100%;
+}
+.weui-badge{
+position: absolute;
+right: 3rpx;
+top: 0rpx;
+border-radius: 50%;
+width: 40rpx;
+height: 40rpx;
+line-height: 40rpx;
+padding: 0;
+
+}
+.footer .add_gwc,
+.footer .take_it{
+  width:35%;
+  color: #fff;
+  font-size: 32rpx;
+  line-height: 100rpx;
+}
+.footer .add_gwc{
+  background:#ff6850;
+}
+.footer .take_it{
+  background:#e64340;
+}
+.mask{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 993;
+}
+.t_gwc{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #fff;
+  z-index: 994;
+}
+.t_top{
+  display: flex;
+  position: relative;
+   padding: 20rpx;
+}
+.t_top .img{
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 20rpx;
+}
+.t_top .img image{
+  width: 120rpx;
+  height: 120rpx;
+}
+.right{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 500rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;/*为行数*/
+  -webkit-box-orient: vertical;
+}
+.right .r_name{
+  font-size: 30rpx;
+  color: #000;
+}
+.right .r_pri{
+  font-size: 28rpx;
+  color: #e64340;
+}
+.line{
+  height:4rpx;
+  background: #eee;
+  margin-bottom: 40rpx;
+   padding:0 20rpx;
+}
+.close{
+ position: absolute;
+ top: 20rpx;
+ right: 20rpx;
+ background: url("https://cdn.it120.cc/images/weappshop/popup-close.png") no-repeat center;
+ width: 36rpx;
+ height: 36rpx;
+ background-size: 36rpx 36rpx;
+}
+.gm{
+  display: flex;
+  justify-content: space-between;
+   padding: 20rpx;
+}
+.gm_wn{
+  font-size: 28rpx;
+  color: #000;
+  line-height: 60rpx;
+}
+ .compute{
+color: #999;
+display: flex;
+width: 200rpx;
+text-align: center;
+}
+.compute text{
+  flex: 1;
+  height: 60rpx;
+  border: 1rpx solid #999;
+}
+.compute  .num{
+  width: 90rpx;
+  height:60rpx;
+  font-size: 26rpx;
+  line-height: 60rpx;
+  border: none;
+  border-top: 1rpx solid #999;
+  border-bottom: 1rpx solid #999;
+}
+.compute  .disabled{
+  background: #eee;
+}
+.t_gwc .add_gwc{
+  width: 750rpx;
+  text-align: center;
+  background:#e64340;
+  color: #fff;
+  font-size: 32rpx;
+  line-height: 80rpx;
+  margin-top: 20rpx;
+}
+.t_gwc  .now_buy{
+  width: 750rpx;
+  text-align: center;
+  background:#e64340;
+  color: #fff;
+  font-size: 32rpx;
+  line-height: 80rpx;
+  margin-top: 20rpx;
+}

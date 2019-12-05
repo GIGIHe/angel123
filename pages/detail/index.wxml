@@ -1,0 +1,74 @@
+<import src="../../wxParse/wxParse.wxml" />
+<view class="de_wrap">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class="swiper">
+        <block wx:for="{{pics}}" wx:key="*this">
+          <swiper-item>
+            <image src="{{item.pic}}" mode="aspectFill" lazy-load = "true"></image>
+          </swiper-item>
+        </block>
+</swiper>
+<view class="basic_info">
+<view  class="basic_top">
+<view class="name">{{basic_info.name}}</view>
+<view class="share"><image src="../../images/share.png" mode="aspectFill" lazy-load = "true" ></image></view>
+</view>
+<view  class="basic_bot">
+<text class="price">￥{{basic_info.minPrice}}</text>
+<text class="gm_num">购买{{basic_info.numberSells}}次</text>
+<text class="hp_num">共收到{{basic_info.numberGoodReputation}}次好评</text>
+</view>
+</view>
+<view class="con">
+<view class="cont">商品介绍</view>
+  <template is="wxParse" data="{{wxParseData:con.nodes}}"/>
+</view>
+<!-- 分享，下面的四个功能按钮 -->
+<view class="footer">
+    <view class="weui-cells weui-cells_after-title chat">
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+            <image src="../../images/kefu.png" mode="aspectFill"/>
+            <text>客服</text>
+            <!-- <view class="weui-badge">8</view> -->
+        </view>
+    </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title cart" bindtap="go_cate">
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+            <image src="../../images/cart.png" mode="aspectFill"/>
+            <text>购物车</text>
+            <view class="weui-badge">{{car_num}}</view>
+        </view>
+    </view>
+    </view>
+<view class="add_gwc" bindtap="collect" data-flag="0">加入购物车</view>
+<view class="take_it" bindtap="collect" data-flag="1">立即购买</view>
+</view>
+<view class="mask" wx:if="{{isMask}}">
+  <view class="t_gwc">
+    <view class="t_top">
+      <view class="img">
+        <image src="{{basic_info.pic}}" />
+      </view>
+      <view class="right">
+        <text class="r_name">{{basic_info.name}}</text>
+        <text  class="r_pri">￥{{basic_info.minPrice}}</text>
+      </view>
+      <view class="close" bindtap="bind_close"></view>
+    </view>
+    <view class="line"></view>
+    <view class="line"></view>
+    <view class="gm">
+      <view class="gm_wn">购买数量</view>
+      <view class="compute">
+        <text class="sub isFlag?'disabled':''" bindtap="sub">-</text>
+        <text class="num">{{goodsNum}}</text>
+        <text class="add" bindtap="add">+</text>
+      </view>
+    </view>
+    <view class="add_gwc" wx:if="{{gwc}}" bindtap="add_gwc">加入购物车</view>
+    <view class="now_buy" wx:else>立即购买</view>
+  </view>
+</view>
+</view>

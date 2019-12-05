@@ -1,0 +1,104 @@
+
+<view class="page__bd">
+  <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+          <view class="weui-search-bar__box">
+              <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+              <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+              <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                  <icon type="clear" size="14"></icon>
+              </view>
+          </view>
+          <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+              <icon class="weui-icon-search" type="search" size="14"></icon>
+              <view class="weui-search-bar__text">搜索</view>
+          </label>
+      </view>
+      <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+  </view>
+</view>
+<view class="ads">
+  <image src="/images/notice.png" class="notice"></image>
+  <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" vertical="true" circular = "true">
+    <block wx:for="{{notice}}" wx:key = "index">
+      <swiper-item>
+        <navigator class="ads-text" url="/pages/ad/ad?id={{item.id}}">{{item.title}}</navigator>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<!-- 商品分类 -->
+<view class="category">
+  <view class="cell {{c_id==item.id?'hover':''}}" wx:for="{{category}}" wx:key = "index" bindtap="classify" data-id="{{item.id}}">
+  <image src="{{item.icon}}"/>
+  <text class="cate_text">{{item.name}}</text>
+  </view>
+</view>
+<!-- banner部分 -->
+<view class="banner">
+ <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots = "true" indicator-active-color = "#0ff">
+    <block wx:for="{{banner}}" wx:key = "index">
+      <swiper-item>
+        <!-- <navigator class="ads-text" url="/pages/ad/ad?id={{item.id}}"> -->
+        <view  class="ads-text">
+       <image src="{{item.picUrl}}" wx:show = "'{{item.statusStr}}' == '显示'? true:false"></image>
+        </view>
+        <!-- </navigator> -->
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<!-- 爆品推荐 -->
+<view class="pt">
+-- 爆品推荐 --
+</view>
+<view class="re_wrap">
+  <navigator class="re_itm" wx:for = "{{goods}}" wx:key = "index" url="/pages/detail/index?item_id={{item.id}}">
+    <image src="{{item.pic}}"/>
+    <text class="itm_tit">{{item.name}}</text>
+    <view class="re_price">
+    <text class="spe_pri">￥{{item.minPrice}}</text>
+    <text class="old_pri">￥{{item.originalPrice}}</text>
+    </view>
+  </navigator>
+</view>
+<!-- 爆品推荐 -->
+<!-- 全民拼团 -->
+<view class="pt">
+-- 全民拼团 --
+</view>
+<view class="pt_wrap" wx:for="{{pts}}" wx:key="{{index}}">
+<view class="pt_img">
+<image src="{{item.pic}}" mode="aspectFill" lazy-load = "true"/>
+</view>
+<view class="pt_txt">{{item.name}}</view>
+<view class="pt_desc">
+<view class="pt_l">
+<view class="characteristic">{{item.characteristic}}</view>
+<view class="pr_l">
+<text class="pr_des">￥{{item.minPrice}}</text>
+<text class="pt_pri">￥{{item.originalPrice}}</text>
+</view>
+</view>
+<navigator url="/pages/detail/index?item_id={{item.id}}" class="btn">拼团</navigator>
+</view>
+</view>
+<!-- 全民拼团 -->
+<!-- 商品列表 -->
+<view class="goods_block">--商品列表--</view>
+<view class="goods_con" id="target">
+<navigator wx:for = "{{all_goods}}" wx:key = "{{index}}" url="/pages/detail/index?item_id={{item.id}}" class="item" hover-class="link-hover" >
+   <view class="item_pic">
+   <image src="{{item.pic}}" mode="aspectFill" lazy-load = "true"></image>
+   </view>
+   <view class="itm_tit">{{item.name}}</view>
+    <view class="re_price">
+    <text class="spe_pri">￥{{item.minPrice}}</text>
+    <text class="old_pri">￥{{item.originalPrice}}</text>
+    </view>
+</navigator>
+</view> 
+<!-- 商品列表 -->
+<view class="bot" wx:show="{{isShow}}">
+别揪我的耳朵，到底了~~~
+</view>

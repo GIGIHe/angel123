@@ -1,0 +1,58 @@
+
+<!-- //购物车为空的时候 -->
+ <template name="no_goods">
+ <view class="vacant">
+ <view>
+ <image src="../../images/icon-cart.png"></image>
+ <view class="grey_text">购物车空空如也</view>
+ </view>
+   <!-- <navigator url="/pages/index/index" class="look">跳转到新页面</navigator>带有tabbar的页面、 -->
+ <view url="/pages/index/index" class="look" bindtap="navagate">去逛逛</view>
+ </view>
+ </template>
+ <!-- //购物车中商品的时候 -->
+<template name="goods">
+ <view class="list">
+  <view class="title">
+    <text>微商城</text>
+    <text wx:if ="{{isBj}}" bindtap="operate">编辑</text>
+    <text wx:else bindtap="operate">完成</text>
+  </view>
+  <view class="presents" wx:for = "{{goods_list}}" wx:key="{{index}}">
+      <view class="left">
+          <image src="{{item.active?'../../images/gou-red.png':'../../images/gou.png'}}"  mode="aspectFill"  bindtap="sel_btn" data-index="{{index}}"></image>
+          <!-- <image src="../../images/gou.png" wx:if="{{active}}"  mode="aspectFill"  bindtap="sel_btn" data-index="{{item.goodsId}}"></image>
+          <image src="../../images/gou-red.png" wx:else mode="aspectFill"  bindtap="no_sel" data-index="{{item.goodsId}}"></image> -->
+      </view>
+      <view class="pic">
+          <image src="{{item.pic}}"  mode="aspectFill"></image>
+      </view>
+      <view class="right">
+          <view class="r_top">{{item.name}}</view>
+          <view class="r_bot">
+            <view class="price">￥{{item.minPri}}</view>
+            <view class="compute">
+              <text class="sub isFlag?'disabled':''" bindtap="sub" data-index="{{index}}">-</text>
+              <text class="num">{{item.goodsNum}}</text>
+              <text class="add" bindtap="add" data-index="{{index}}">+</text>
+            </view>
+          </view>
+      </view>
+  </view>
+  <!-- 底部结算 -->
+  <view class="bt_wrap">
+     <view class="icon">
+        <image src="../../images/gou-red.png"  hidden="{{!selcted}}"  mode="aspectFill" bindtap="all_sel"></image>
+        <image src="../../images/gou.png" hidden="{{selcted}}"  mode="aspectFill"  bindtap="not_all"></image>
+        <text>全选</text>
+     </view>
+     <view class="hj">
+        合计：￥{{}}+0积分
+     </view>
+     <view class="oper">
+        <view class="go_take" hidden="{{!isBj}}" bindtap="gomai">去结算</view>
+        <view class="delete" hidden="{{isBj}}" bindtap="delete">删除</view>
+     </view>
+  </view>
+ </view>
+</template>

@@ -150,6 +150,7 @@ Page({
     let tep1_num = tep1.goodsNum;
     let temp = this.data.shop_data.goods_list
     let that = this
+    var money = this.data.shop_data.totap_pri;
     tep1_num++
     if (tep1 >= tep1.stores){
       tep1_num == tep1.stores
@@ -162,12 +163,17 @@ Page({
         item = carInfo
       }
     })
+    money += tep1.minPri
+    // var gds_list = temp.filter(item => item.active)
+    // gds_list.forEach(i => {
+    //   money += parseFloat(i.minPri) * tep1_num
+    // })
     let obj1={
       goods_list: temp,
       isBj: this.data.shop_data.isBj,
       goumai:this.data.shop_data.goumai,
       selcted: this.data.shop_data.selcted,
-      totap_pri: this.data.shop_data.totap_pri
+      totap_pri: money
     }
     this.setData({
       shop_data: obj1
@@ -190,6 +196,7 @@ Page({
     let tep2 = this.data.shop_data.goods_list[index1]
     let tep2_num = tep2.goodsNum;
     let temp1 = this.data.shop_data.goods_list
+    var money = this.data.shop_data.totap_pri;
     tep2_num--
     if(tep2_num<1){
       tep2_num=1
@@ -203,12 +210,22 @@ Page({
         item = carInfo1
       }
     })
+    
+    if(money>=tep2.minPri){
+      money -= tep2.minPri
+    }else{
+      money = tep2_num
+    }
+    // var gds_list = temp1.filter(item => item.active)
+    // gds_list.forEach(i => {
+    //   money += parseFloat(i.minPri) * tep2_num
+    // })
     let obj2 = {
       goods_list: temp1,
       isBj: this.data.shop_data.isBj,
       goumai: this.data.shop_data.goumai,
       selcted: this.data.shop_data.selcted,
-      totap_pri: this.data.shop_data.totap_pri
+      totap_pri: money
     }
     this.setData({
       shop_data: obj2

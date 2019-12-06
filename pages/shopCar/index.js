@@ -10,6 +10,7 @@ Page({
       isBj: true,
       selcted:true,
       goumai:true,
+      totap_pri:0,
       goods_list: [],
     },
     showShop: true
@@ -42,6 +43,7 @@ Page({
     var $this = this
     var index = parseInt(option.currentTarget.dataset.index)
     var goods_list = $this.data.shop_data.goods_list;
+    var money = 0;
     for(var i = 0 ; i < goods_list.length;i++){
       if(index == i){
         goods_list[i].active = !goods_list[i].active
@@ -62,57 +64,77 @@ Page({
        })
      }
    }
+    var gds_list = goods_list.filter(item => item.active)
+    gds_list.forEach(i => {
+      money += parseFloat(i.minPri)
+    })
+    $this.setData({
+      ['shop_data.totap_pri']: money
+    })
     return ;
   },
  not_all:function(){
     var $this = this
     var goods_list = $this.data.shop_data.goods_list;
+    var money = 0;
     for (var i = 0; i < goods_list.length; i++) {
         goods_list[i].active = true
     }
+   var gds_list = goods_list.filter(item => item.active)
+   gds_list.forEach(i => {
+     money += parseFloat(i.minPri)
+   })
     $this.setData({
       ['shop_data.goods_list']: goods_list,
-      ['shop_data.selcted']: true
+      ['shop_data.selcted']: true,
+      ['shop_data.totap_pri']: money
     })
   },
-  all_sel: function (option) {
+ all_sel: function (option) {
     var $this = this
     var goods_list = $this.data.shop_data.goods_list;
+    var money = 0;
     for (var i = 0; i < goods_list.length; i++) {
         goods_list[i].active = false
     }
     $this.setData({
       ['shop_data.goods_list']: goods_list,
-      ['shop_data.selcted']: false
+      ['shop_data.selcted']: false,
+      ['shop_data.totap_pri']: money
     })
   },
   // 删除购物车信息
   delete:function(){
     var $this = this
-    var goods_list =  wx.getStorageSync('shopInfo')
-    var new_arr = goods_list
-    console.log(goods_list)
+    var goods_list =  this.data.shop_data.goods_list
+    // for (var m = 0; m < goods_list.length; m++) {
+    //   if (goods_list[m].active = true) {
+    //     console.log(m)
+    //     goods_list.splice(m,1)
+    //     break;
+    //   }
+    // } I was confused by the bad method for a noon
+    let new_arr = goods_list.filter(item => !item.active)
     console.log(new_arr)
-    for (var i = 0; i < goods_list.length; i++) {
-      if (goods_list[i].active = true) {
-        new_arr.splice(0,i)
-      }
-    }
-    console.log(new_arr)
-    this.setData({
+    $this.setData({
       ['shop_data.goods_list']: new_arr,
     })
-    wx.showModal({
-      title: '购物车',
-      content: '确定删除？', 
-      success:res=>{
-       if(res.confirm){
-         wx.setStorageSync('shopInfo', this.data.shop_data)
-       }else if(res.cancel){        
-       }
-      }
-    })
-    console.log(this.data.shop_data)
+    wx.setStorageSync('shopInfo', $this.data.shop_data)
+    // wx.showModal({
+    //   title: '购物车',
+    //   content: '确定删除？', 
+    //   success:res=>{
+    //    if(res.confirm){
+    //      wx.setStorageSync('shopInfo', this.data.shop_data)
+    //    }else if(res.cancel){        
+    //    }
+    //   }
+    // })
+  },
+  // 结算
+  gomai:function(){
+    var gmai = this.data.shop_data
+    console.log(gmai)
   },
 //  getData:function(){
 //    let info = wx.getStorageSync('shopInfo')
@@ -144,6 +166,8 @@ Page({
       goods_list: temp,
       isBj: this.data.shop_data.isBj,
       goumai:this.data.shop_data.goumai,
+      selcted: this.data.shop_data.selcted,
+      totap_pri: this.data.shop_data.totap_pri
     }
     this.setData({
       shop_data: obj1
@@ -183,7 +207,8 @@ Page({
       goods_list: temp1,
       isBj: this.data.shop_data.isBj,
       goumai: this.data.shop_data.goumai,
-      selcted: this.data.shop_data.selcted
+      selcted: this.data.shop_data.selcted,
+      totap_pri: this.data.shop_data.totap_pri
     }
     this.setData({
       shop_data: obj2
@@ -207,11 +232,17 @@ Page({
    */
   onShow: function () {
     let info = wx.getStorageSync('shopInfo')
+    var money=0;
+    let info_a = info.filter(item=>item.active)
+    info_a.forEach(i=>{
+      money += parseFloat(i.minPri)
+    })
     let info_arr = {
       goods_list: info,
       isBj: this.data.shop_data.isBj,
       goumai: this.data.shop_data.goumai,
-      selcted: this.data.shop_data.selcted
+      selcted: this.data.shop_data.selcted,
+      totap_pri: money,
     }
     this.setData({
       shop_data: info_arr

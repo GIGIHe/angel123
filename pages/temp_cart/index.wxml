@@ -47,7 +47,7 @@
         <text>全选</text>
      </view>
      <view class="hj">
-        合计：￥{{}}+0积分
+        合计：￥{{totap_pri}}+0积分
      </view>
      <view class="oper">
         <view class="go_take" hidden="{{!isBj}}" bindtap="gomai">去结算</view>

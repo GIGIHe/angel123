@@ -77,5 +77,9 @@ module.exports = {
   },
   detail: (data) => {
     return request('shop/goods/detail', true, 'GET', data)
+  },
+// 下单
+  createOrder: (data) => {
+    return request('order/create', true, 'POST', data)
   }
 }

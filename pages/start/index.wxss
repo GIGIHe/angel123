@@ -1,0 +1,28 @@
+.page{
+  width: 750rpx;
+  height: 100vh;
+  position: relative;
+}
+.page swiper{
+   width: 100%;
+  height: 100vh;
+}
+.page image{
+  display: block;
+  width: 100%;
+  height: 100vh;
+}
+.goIn{
+position: absolute;
+left: 50%;
+bottom: 12%;
+transform: translateX(-50%);
+font-size: 30rpx;
+color: #fff;
+border-radius: 10rpx;
+background: rgb(233, 177, 24);
+text-align: center;
+width: 200rpx;
+height: 60rpx;
+line-height: 60rpx;
+}

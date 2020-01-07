@@ -1,10 +1,13 @@
 {
   "pages": [
+    "pages/start/index",
     "pages/index/index",
     "pages/ad/ad",
     "pages/detail/index",
     "pages/my/index",
-    "pages/shopCar/index"
+    "pages/shopCar/index",
+    "pages/create-order/index",
+    "pages/order/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",

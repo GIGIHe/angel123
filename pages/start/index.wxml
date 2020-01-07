@@ -1,0 +1,13 @@
+ <view class="page">
+    <swiper indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{starts}}" wx:key="*this">
+          <swiper-item>
+            <view class="swiper-item">
+            <image src="{{item.picUrl}}" mode="aspectFill" ></image>
+             <view class="goIn " bindtap="goIn" wx:if="{{index == len}}">进入店铺</view>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+ </view>  

@@ -1,2 +1,88 @@
-<!--pages/my/index.wxml-->
-<text>pages/my/index.wxml</text>
+<view class="my">
+<!-- top -->
+  <view class="userInfo white">
+   <view class="my-top" wx:if="{{userInfo}}">
+      <image src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+      <view class="nickname">{{userInfo.nickName}}</view>
+    </view>
+     <view wx:else>
+       <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class="login-btn">登录</button>
+      <view wx:else>请升级微信版本</view>
+  </view>
+  </view>
+  <!-- 余额 -->
+  <view class="surplus flx white">
+    <view class="item flx">
+      <view class="num">0.00</view>
+      <view class="text">余额</view>
+    </view>
+    <view class="item">
+      <view class="num">0.00</view>
+      <view class="text">冻结</view>
+    </view>
+     <view class="item">
+      <view class="num">0.00</view>
+      <view class="text">积分</view>
+    </view>
+  </view>
+  <!-- 订单 -->
+  <view class="order flx white">
+    <view class="all-order">我的订单</view>
+    <image src="../../images/arrow-right.png"></image>
+  </view>
+  <!-- message -->
+   <view class="msg flx white">
+    <view class="item flx">
+     <image src="../../images/order/topay.png"></image>
+      <view class="text">待付款</view>
+    </view>
+    <view class="item flx">
+     <image src="../../images/order/fahuo.png"></image>
+      <view class="text">待发货</view>
+    </view>
+     <view class="item flx">
+     <image src="../../images/order/shouhuo.png"></image>
+      <view class="text">待收货</view>
+    </view>
+     <view class="item flx">
+     <image src="../../images/order/pj.png"></image>
+      <view class="text">待评价</view>
+    </view>
+    <view class="item flx">
+     <image src="../../images/order/shouhou.png"></image>
+      <view class="text">退款/售后</view>
+    </view>
+  </view>
+  <!-- cate -->
+  <view class="order flx white">
+    <view class="all-order">资金明细</view>
+    <image src="../../images/arrow-right.png"></image>
+  </view>
+  <view class="order flx white">
+    <view class="all-order">每日签到</view>
+    <image src="../../images/arrow-right.png"></image>
+  </view>
+  <view class="order flx white">
+    <view class="all-order">积分兑换</view>
+    <image src="../../images/arrow-right.png"></image>
+  </view>
+  <view class="order flx white">
+    <view class="all-order">收货地址</view>
+    <image src="../../images/arrow-right.png"></image>
+  </view>
+  <view class="order flx white">
+    <view class="all-order">领券中心</view>
+    <image src="../../images/arrow-right.png"></image>
+  </view>
+  <!-- about&logout -->
+  <view class="order flx white">
+    <view class="all-order">关于我们</view>
+    <image src="../../images/arrow-right.png"></image>
+  </view>
+   <view class="haslogin" wx:if="{{userInfo}}">
+    <view class="logout white">退出登录</view>
+    <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"  class="bind white">绑定手机号</button> -->
+   </view>
+    <!-- copyright -->
+    <view class="copyright white">Powered by EastWorld {{version}} </view>
+</view>

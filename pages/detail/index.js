@@ -180,14 +180,12 @@ Page({
            console.log(i, info.length - 1, shopCars[i].goodsId, id)
            shopCars.unshift(shops)
            badge_num = 1 //首次加入为1
-           this.setData({
-             car_num:1
-           })
            break;
          }
        }
      }else{
         shopCars.unshift(shops)
+        badge_num = 1 
      }
      wx.setStorageSync("shopInfo", shopCars)
      wx.getStorage({

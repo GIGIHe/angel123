@@ -61,10 +61,23 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/detail/index",
-					"pathName": "pages/detail/index",
+					"id": 2,
+					"name": "pages/my/index",
+					"pathName": "pages/my/index",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/start/index",
+					"pathName": "pages/start/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/create-order/index",
+					"pathName": "pages/create-order/index",
 					"scene": null
 				}
 			]

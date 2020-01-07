@@ -39,6 +39,7 @@ Page({
       ['shop_data.isBj']: !this.data.shop_data.isBj
     })
   },
+  // 选择
   sel_btn: function (option) {
     var $this = this
     var index = parseInt(option.currentTarget.dataset.index)
@@ -133,9 +134,24 @@ Page({
   },
   // 结算
   gomai:function(){
-    var gmai = this.data.shop_data
-    console.log(gmai)
+    var gmai = this.data.shop_data.goods_list
+    var $this = this
+    // 过滤
+   let newOrders =  gmai.filter(item=>item.active)
+  // 得到选中的商品信息
+    wx.setStorage({
+      key: 'orderInfo',
+      data: newOrders,
+    })
+    wx.navigateTo({
+      url: '/pages/create-order/index',
+    })
   },
+  // 组件订单信息
+  // orderList:function(){
+  //   var order = {}
+
+  // }
 //  getData:function(){
 //    let info = wx.getStorageSync('shopInfo')
 //    this.setData({
@@ -154,6 +170,7 @@ Page({
     tep1_num++
     if (tep1 >= tep1.stores){
       tep1_num == tep1.stores
+        money += tep2.minPri
     }
     var carInfo = {}
     carInfo = tep1
@@ -164,10 +181,6 @@ Page({
       }
     })
     money += tep1.minPri
-    // var gds_list = temp.filter(item => item.active)
-    // gds_list.forEach(i => {
-    //   money += parseFloat(i.minPri) * tep1_num
-    // })
     let obj1={
       goods_list: temp,
       isBj: this.data.shop_data.isBj,
@@ -210,16 +223,14 @@ Page({
         item = carInfo1
       }
     })
-    
-    if(money>=tep2.minPri){
+    if (money > tep2.minPri && tep2_num>1){
       money -= tep2.minPri
-    }else{
-      money = tep2_num
+      this.setData({
+        ['shop_data.totap_pri']: money
+      })
+    } else{
+      money = this.data.shop_data.totap_pri
     }
-    // var gds_list = temp1.filter(item => item.active)
-    // gds_list.forEach(i => {
-    //   money += parseFloat(i.minPri) * tep2_num
-    // })
     let obj2 = {
       goods_list: temp1,
       isBj: this.data.shop_data.isBj,
@@ -252,7 +263,7 @@ Page({
     var money=0;
     let info_a = info.filter(item=>item.active)
     info_a.forEach(i=>{
-      money += parseFloat(i.minPri)
+      money += parseFloat(i.minPri)*(i.goodsNum)
     })
     let info_arr = {
       goods_list: info,

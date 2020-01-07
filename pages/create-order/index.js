@@ -1,32 +1,55 @@
-// pages/my/index.js
-const config = require("../../config.js")
+const WXApi = require("../../utils/Api.js")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+      orderData:[],
+    items: [
+      { name: '1', value: '快递' },
+      { name: '2', value: '到店自取', checked: 'true' },
+    ],
+    ps: "",
+    bz:'',
+    total_price:0,
+    jifen:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      version: config.version
+
+  },
+  getData:function(){
+    var $this = this
+   let orders =   wx.getStorageSync("orderInfo")
+   console.log(orders)
+   let total = 0
+   orders.forEach((item,index)=>{
+     total += item.minPri * (item.goodsNum)
+   })
+    $this.setData({
+      orderData: orders,
+      total_price:total,
+      // jifen:0
     })
   },
-  bindGetUserInfo(e) {
+  radioChange: function (e) {
+    // console.log('radio发生change事件，携带value值为：', e.detail.value)
     this.setData({
-      userInfo: res.userInfo
+      ps: e.detail.value
     })
   },
-  getPhoneNumber(e) {
-    console.log(e.detail.errMsg)
-    console.log(e.detail.iv)
-    console.log(e.detail.encryptedData)
-    console.log(e)
+  hanlde:function(e){
+    this.setData({
+      bz: e.detail.value
+    })
+    console.log(this.data.bz)
+  },
+  submit:function(){
+    WXApi.createOrder({})
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -39,23 +62,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var $this = this
-    // 查看是否授权
-    wx.getSetting({
-      success(res) {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
-            success: function (res) {
-              $this.setData({
-                userInfo: res.userInfo
-              })
-              // console.log($this.data.userInfo)
-            }
-          })
-        }
-      }
-    })
+    this.getData()
   },
 
   /**

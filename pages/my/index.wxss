@@ -1,1 +1,81 @@
-/* pages/my/index.wxss */
+.my{
+  background: #f2f2f2;
+}
+.flx{
+   display: flex;
+   flex-wrap: wrap;
+}
+.white{
+  background: #fff;
+}
+.userInfo{
+  padding-bottom: 20rpx;
+    margin-bottom: 10rpx;
+}
+.my-top{
+   text-align: center;
+}
+.login-btn{
+  font-size: 32rpx;
+}
+.my-top image{
+ width: 132rpx;
+height: 132rpx;
+}
+.my-top .nickname{
+  font-size:30rpx;
+  text-align: center
+}
+.surplus,
+.msg{
+  margin-bottom: 10rpx;
+
+}
+ .item{
+  flex: 1;
+  border-right: 1rpx solid #ddd;
+  padding: 10rpx 0;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  font-size: 26rpx;
+  
+}
+.msg .item{
+  align-items: center
+}
+.order{
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 10rpx;
+
+}
+.order image{
+  width: 25rpx;
+  height: 40rpx;
+}
+.msg image{
+  width: 60rpx;
+  height: 60rpx;
+}
+/* 退出登录 */
+.logout,.bind{
+  width: 600rpx;
+  margin:0 auto 10rpx;
+  border: 1rpx solid #ddd;
+  border-radius: 4rpx;
+  padding: 12rpx 0;
+  font-size: 30rpx;
+  color: #E64340;
+  text-align: center;
+}
+.bind{
+  color: #000;
+}
+.copyright{
+    text-align: center;
+    padding: 20rpx 0;
+    margin-bottom: 10rpx;
+}

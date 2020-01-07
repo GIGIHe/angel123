@@ -1,0 +1,41 @@
+<view class="order-create">
+  <!-- 订单信息 -->
+  <view class="order-msg  white">
+      <text class="title">商品列表</text>
+      <view class="row" wx:for = "{{orderData}}"  wx:key ="index">
+      <image mode="aspectFill" src="{{item.pic}}"></image>
+      <view class="name">{{item.name}}</view>
+      <view class="num">
+        <view class="price">
+         ￥{{item.minPri}}
+        </view>
+        <view class="nums">
+        x{{item.goodsNum}}
+        </view>
+      </view>
+      </view>
+  </view>
+<!-- 配送方式 &备注 -->
+<view class="post-notice white">
+<view class="post">
+   <text>配送方式</text>
+    <view class="page__bd">
+        <view class="section section_gap">
+            <radio-group class="radio-group" bindchange="radioChange">
+                <radio class="radio mr" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+                    <text>{{item.value}}</text>
+                </radio>
+            </radio-group>
+        </view>
+    </view>
+</view>
+<view class="notice">
+<text>备注</text>
+<input placeholder="如需备注请输入" bindblur = "hanlde" confirm-type="done"></input>
+</view>
+</view>
+<view class="order-bot white">
+   <view class="total">合计：￥{{total_price}} + {{jifen}} 积分</view>
+   <view class="submit" bindtap="submit">提交订单</view>
+</view>
+</view>
